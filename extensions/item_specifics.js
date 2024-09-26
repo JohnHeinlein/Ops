@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ops Item Specifics
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.5
 // @description  try to take over the world!
 // @author       You
 // @match        https://ops.sunnking.com/Inventory/Process*
@@ -38,7 +38,7 @@ function injectCSS(){
     // This will allow this script to be portable.
     // Otherwise, I use Stylus for live edits with a LESS preprocessor, then compile and minify it to store in the below variable.
     if(!debug){
-        var css = `#jd-ebay-panel,#jd-ebay-panel #jd-ebay-aspect-table td,#jd-ebay-panel #jd-ebay-aspect-table tr{height:fit-content}#jd-ebay-panel,#jd-ebay-panel button:not(#jd-ebay-restore){color:#f8f8f8;box-shadow:1px 1px 3px #000!important;filter:unset!important}#jd-ebay-panel fieldset input,.jd-hidden{display:none}.jd-hidden{transform:scale(0);pointer-events:none}.jd-warning{animation:1s linear infinite alternate both jd-warning;transition:padding .1s linear;padding:0 5px;border-width:2px;margin-top:2px;margin-bottom:2px}@keyframes jd-warning{from{border-color:pink}to{border-color:red}}.jd-loading{position:relative}.jd-loading .jd-load-container{position:absolute;height:100%;width:100%;top:0}.jd-loading .jd-load-container i{font-size:25px;line-height:25px;color:#ff5722;position:absolute;margin:0!important;left:calc(50% - 25px/2);top:calc(50% - 25px/2);animation:1s linear infinite both loading}@keyframes loading{from{transform:rotate(0)}to{transform:rotate(360deg)}}.jd-loading .jd-load-container .jd-blur{position:absolute;height:100%;width:100%;backdrop-filter:blur(10px)}#AssetDetails_Top tr:nth-child(4),#AssetDetails_Top tr:nth-child(5){border-color:red;border-radius:5px;transition:padding .1s linear,border-width .2s linear,margin .1s linear}#jd-ebay-panel{display:flex;flex-flow:column;z-index:1;width:500px;max-height:500px;overflow-y:hidden;overflow-x:hidden;scrollbar-width:thin;background-color:#121212;border-radius:10px;border:unset!important;position:absolute!important;right:0;bottom:0;transition:transform .1s ease-out,box-shadow .1s ease-out}#jd-ebay-panel .jd-header{position:sticky;top:0;width:500px}#jd-ebay-panel .jd-header p{margin-bottom:0;padding-left:5px;background-color:#ff5722;font-size:14pt;user-select:none}#jd-ebay-panel .jd-header #jd-ebay-restore{position:absolute;top:0;right:0;border:unset;height:100%;background-color:transparent;font-size:12pt;color:#fff}#jd-ebay-panel .jd-header #jd-ebay-restore:hover{color:#000}#jd-ebay-panel #jd-ebay-body{display:flex;flex-flow:column;overflow-y:hidden}#jd-ebay-panel.ui-draggable-dragging{transform:scale(1.05);box-shadow:0 0 10px #000!important}#jd-ebay-panel #jd-ebay-table-container{overflow-y:auto}#jd-ebay-panel table{width:100%;margin:0!important}#jd-ebay-panel table tr th{text-align:center;border-bottom:1px solid #000}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-value,#jd-ebay-panel table tr td,#jd-ebay-panel table tr th{padding:5px}#jd-ebay-panel table tr td:not(:first-child),#jd-ebay-panel table tr th:not(:first-child){border-left:1px solid #000}#jd-ebay-panel table tr:hover{background-color:#333}#jd-ebay-panel #jd-ebay-aspect-table td:first-child,#jd-ebay-panel #jd-ebay-aspect-table th:first-child{width:150px;text-align:right;padding:0 10px 0 0;height:100%}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-recommended .jd-aspect-name,#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-required .jd-aspect-name{font-weight:700}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-required .jd-aspect-name{color:red!important}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-recommended .jd-aspect-name{color:green!important}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-value input,#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-value select,#jd-ebay-panel #jd-ebay-controls #jd-ebay-confirm,#jd-ebay-panel #jd-ebay-controls #jd-ebay-suggest,#jd-ebay-panel .jd-catSelectButt{width:100%}#jd-ebay-panel #jd-ebay-aspect-table fieldset{display:flex;flex-flow:row wrap;gap:5px;justify-content:space-around}#jd-ebay-panel #jd-ebay-aspect-table fieldset label{flex-grow:1;margin:0;text-align:center;user-select:none}#jd-ebay-panel #jd-ebay-aspect-table fieldset label.ui-checkboxradio-checked{background-color:#ff5722}#jd-ebay-panel button:not(#jd-ebay-restore){background-color:#454545;border-radius:10px;border:unset!important;transition:background-color .1s linear;padding:5px}#jd-ebay-panel button:not(#jd-ebay-restore):hover{background-color:#22caff;color:#121212}#jd-ebay-panel #jd-ebay-controls{display:flex;position:sticky;top:0;flex-flow:row wrap;gap:5px;padding:10px}#jd-ebay-panel #jd-ebay-controls #jd-ebay-load-specs,#jd-ebay-panel #jd-ebay-controls #jd-ebay-save-specs{flex-grow:1}#jd-ebay-panel i{margin-right:5px}#jd-ebay-panel .fa-floppy-disk{color:green}#jd-ebay-panel .fa-arrows-rotate{color:red}#jd-ebay-panel fieldset label{border:1px solid #f6f6f6;padding:2px;border-radius:5px}#jd-ebay-panel #jd-ebay-warning{width:100%;margin:0;padding:5pt 0;text-align:center;font-weight:700;color:red;background-color:pink;border-radius:10px}`;
+        var css = `#jd-ebay-panel,#jd-ebay-panel #jd-ebay-aspect-table td,#jd-ebay-panel #jd-ebay-aspect-table tr{height:fit-content}#jd-ebay-panel,#jd-ebay-panel button:not(.jd-ebay-control){color:#f8f8f8;box-shadow:1px 1px 10px #000!important;filter:unset!important}@keyframes load-fade{0%{opacity:0;transform:scale(.8)}100%{opacity:1;transform:scale(1)}}.load-fade{animation:.25s ease-out load-fade}.jd-hidden{display:none!important;pointer-events:none}.jd-warning{animation:1s linear infinite alternate both jd-warning;transition:padding .1s linear;padding:0 5px;border-width:2px;margin-top:2px;margin-bottom:2px}@keyframes jd-warning{from{border-color:pink}to{border-color:red}}.jd-loading{position:relative}.jd-loading .jd-load-container{position:absolute;height:100%;width:100%;top:0}.jd-loading .jd-load-container i{font-size:25px;line-height:25px;color:#ff5722;position:absolute;margin:0!important;left:calc(50% - 25px/2);top:calc(50% - 25px/2);animation:1s linear infinite both loading}@keyframes loading{from{transform:rotate(0)}to{transform:rotate(360deg)}}.jd-loading .jd-load-container .jd-blur{position:absolute;height:100%;width:100%;backdrop-filter:blur(10px)}#jd-ebay-panel{display:flex;flex-flow:column;z-index:1;width:500px;max-height:500px;overflow-y:hidden;overflow-x:hidden;scrollbar-width:thin;background-color:#2c2c2c;border-radius:10px;border:unset!important;position:absolute!important;right:0;bottom:0;transition:transform .1s ease-out,box-shadow .1s ease-out}#jd-ebay-panel .jd-header{position:sticky;top:0;width:500px;display:grid;grid:"title controls" 25px/1fr min-content;background-color:#ff5722}#jd-ebay-panel .jd-header p{grid-area:title;margin-bottom:0;padding-left:5px;font-size:14pt;user-select:none}#jd-ebay-panel .jd-header #jd-ebay-controls{grid-area:controls;height:25px;padding:0;display:flex;flex-flow:row;width:fit-content}#jd-ebay-panel .jd-header #jd-ebay-controls button{width:25px;border:unset;height:100%;background-color:transparent;font-size:12pt;color:#fff}#jd-ebay-panel .jd-header #jd-ebay-controls button:hover{color:#000}#jd-ebay-panel #jd-ebay-body{display:flex;flex-flow:column;overflow-y:hidden;transition:.2s linear}#jd-ebay-panel #jd-ebay-body.jd-collapse{height:0}#jd-ebay-panel.ui-draggable-dragging{transform:scale(1.05);box-shadow:1px 1px 10px #000!important}#jd-ebay-panel #jd-ebay-table-container{overflow-y:auto}#jd-ebay-panel table{width:100%;margin:0!important}#jd-ebay-panel table tr th{text-align:center;border-bottom:1px solid #000}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-value,#jd-ebay-panel table tr td,#jd-ebay-panel table tr th{padding:5px}#jd-ebay-panel table tr td:not(:first-child),#jd-ebay-panel table tr th:not(:first-child){border-left:1px solid #000}#jd-ebay-panel table tr:hover{background-color:#333}#jd-ebay-panel #jd-ebay-aspect-table td:first-child,#jd-ebay-panel #jd-ebay-aspect-table th:first-child{width:150px;text-align:right;padding:0 10px 0 0;height:100%}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-recommended .jd-aspect-name,#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-required .jd-aspect-name{font-weight:700}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-required .jd-aspect-name{color:red!important}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-recommended .jd-aspect-name{color:green!important}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-value input,#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-value select,#jd-ebay-panel #jd-ebay-controls #jd-ebay-confirm,#jd-ebay-panel #jd-ebay-controls #jd-ebay-suggest,#jd-ebay-panel .jd-catSelectButt{width:100%}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-value:has(.jd-aspect-select-other){display:flex;flex-flow:row;gap:5px}#jd-ebay-panel #jd-ebay-aspect-table .jd-aspect-value:has(.jd-aspect-select-other) .jd-aspect-select{width:8ch}#jd-ebay-panel #jd-ebay-aspect-table fieldset{display:flex;flex-flow:row wrap;gap:5px;justify-content:space-around}#jd-ebay-panel #jd-ebay-aspect-table fieldset label{flex-grow:1;margin:0;text-align:center;user-select:none}#jd-ebay-panel #jd-ebay-aspect-table fieldset label.ui-checkboxradio-checked{background-color:#ff5722}#jd-ebay-panel button:not(.jd-ebay-control){background-color:#454545;border-radius:10px;border:unset!important;transition:background-color .1s linear;padding:5px}#jd-ebay-panel button:not(.jd-ebay-control):hover{background-color:#22caff;color:#121212}#jd-ebay-panel #jd-ebay-controls{display:flex;position:sticky;top:0;flex-flow:row wrap;gap:5px;padding:10px}#jd-ebay-panel #jd-ebay-controls #jd-ebay-load-specs,#jd-ebay-panel #jd-ebay-controls #jd-ebay-save-specs{flex-grow:1}#jd-ebay-panel i{margin-right:5px}#jd-ebay-panel .fa-floppy-disk{color:green}#jd-ebay-panel .fa-arrows-rotate{color:red}#jd-ebay-panel fieldset input{display:none}#jd-ebay-panel fieldset label{border:1px solid #f6f6f6;padding:2px;border-radius:5px}#jd-ebay-panel #jd-ebay-warning{width:100%;margin:0;padding:5pt 0;text-align:center;font-weight:700;color:red;background-color:pink;border-radius:10px}`;
         var style = `<style id="jd-item-specifics-sheet" media="all">${css}</style>`;
         $('head').append($(style));
     }
@@ -174,7 +174,10 @@ function initUI(){
     `<div id="jd-ebay-panel">
         <div class="jd-header">
           <p class='ui-widget-header'>Item Specifics</p>
-          <button id='jd-ebay-restore'><i class='fa-solid fa-down-right'></i></button>
+          <div id='jd-ebay-controls'>
+              <button id='jd-ebay-minimize' class="jd-ebay-control"><i class='fa-solid fa-window-minimize'></i></button>
+              <button id='jd-ebay-restore' class="jd-ebay-control"><i class='fa-solid fa-down-right'></i></button>
+          </div>
         </div>
         <div id="jd-ebay-body">
         <div id="jd-ebay-controls">
@@ -214,7 +217,17 @@ function initUI(){
     </div>`;
 
     // Allow menu to be dragged using JQUI
-    $("body").append($(panel).draggable({handle: 'p.ui-widget-header'}));
+    $("body").append($(panel).draggable({
+        handle: 'p.ui-widget-header',
+        snap:'.dx-viewport',
+        containment:'.dx-viewport',
+        start: function(){
+
+        },
+        stop: function(){
+
+        }
+    }));
 
     // Hook up functionality once appended to DOM
     $("#jd-ebay-suggest").on("click",getSuggestions);
@@ -229,6 +242,12 @@ function initUI(){
             "left": "unset",
             "top": "unset"
         });
+    });
+
+    $("#jd-ebay-minimize").on("click",function(){
+        $("#jd-ebay-body").toggleClass("jd-collapse");
+        $("#jd-ebay-minimize i").toggleClass("fa-window-minimize");
+        $("#jd-ebay-minimize i").toggleClass("fa-window-maximize");
     });
 
     // Listen for changes to Product field and update the UI if we find a local spec sheet.
